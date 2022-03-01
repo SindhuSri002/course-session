@@ -253,5 +253,5 @@ Here's screenshot of successfull update of a course
 - Express documentation.
 - mongoose documentation.
 - Github pages of packages that I used.
-- Refered stackoverflow if i wasn't able to figure out an error.
+- Referred stackoverflow if i wasn't able to figure out an error.
 - For error handling I followed methods which I learnt in a MERN stack bootcamp.
