@@ -37,8 +37,10 @@ This api has following functionalities.
 
 ## Course - 
 
+### Add course
+
 **Query**
-    *GET* /api/v1/courses/
+    *POST* /api/v1/courses/
 
 **Response _(for-success)_**
 
@@ -47,7 +49,14 @@ This api has following functionalities.
     ```
     {
         "status": "success",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTM5MzE2MTlhNmE5MzFiNDNlNDBjNCIsImlhdCI6MTY0NTQ1MDA2NiwiZXhwIjoxNjUzMjI2MDY2fQ.AbBIF614C_alCojRkhhk6m-F71Jc6zRNo8HclYSL8fU"
+        "data": {
+        "_id": "621da2cd439b48257c06b898",
+        "name": "app developement 2",
+        "description": "this is for everyone",
+        "coach": "Sindhu",
+        "__v": 0,
+        "id": "621da2cd439b48257c06b898"
+        }
     }
     ```
 
@@ -55,7 +64,7 @@ This api has following functionalities.
 
     ```
     {
-        "name":"web developement",
+        "name":"app developement 2",
         "description":"this is for everyone",
         "coach":"Sindhu"
     }
@@ -65,15 +74,163 @@ Here's screenshot of adding course successfully
 
 ![added-successfull](images/course/addCourse/addCourse-successfull.png)
 
-### Errors
+**Response _(for-errors)_**
 
 - If course name already exists in db then error occurs
 
 ![adding-unsuccessfull](images/course/addCourse/addCourse-mongoError.png)
 
+### Get all courses
+
+**Query**
+    *GET* /api/v1/courses/
+
+**Response _(for-success)_**
+
+    ```
+    {
+    "status": "success",
+    "courses": [
+        {
+            "_id": "621cd7af2465c7320445e948",
+            "name": "web developement",
+            "description": "this is for everyone",
+            "coach": "Sindhu",
+            "__v": 0,
+            "sessions": [
+                {
+                    "_id": "621d053be489885140dae961",
+                    "title": "backend3",
+                    "agenda": "Api discussion",
+                    "startTime": "12:00",
+                    "endTime": "13:00",
+                    "link": "www.abc.com",
+                    "forCourse": {
+                        "_id": "621cd7af2465c7320445e948",
+                        "name": "web developement",
+                        "id": "621cd7af2465c7320445e948"
+                    },
+                    "__v": 0,
+                    "id": "621d053be489885140dae961"
+                }
+            ]
+        }
+    ]
+    }
+    ```
+Here's screenshot of quering all courses 
+
+![all-courses](images/course/getCourse/getAllCourses.png)
+
+### Get a course by name
+
+**Query**
+    *GET* /api/v1/courses/web-developement/
+
+**Response _(for-success)_**
+
+    ```
+    {
+    "status": "success",
+    "course":
+        {
+            "_id": "621cd7af2465c7320445e948",
+            "name": "web developement",
+            "description": "this is for everyone",
+            "coach": "Sindhu",
+            "__v": 0,
+            "sessions": [
+                {
+                    "_id": "621d053be489885140dae961",
+                    "title": "backend3",
+                    "agenda": "Api discussion",
+                    "startTime": "12:00",
+                    "endTime": "13:00",
+                    "link": "www.abc.com",
+                    "forCourse": {
+                        "_id": "621cd7af2465c7320445e948",
+                        "name": "web developement",
+                        "id": "621cd7af2465c7320445e948"
+                    },
+                    "__v": 0,
+                    "id": "621d053be489885140dae961"
+                }
+        }
+    ]
+    }
+    ```
+Here's screenshot of quering all courses 
+
+![courses](images/course/getCourse/getCourse.png)
+
+### Update a course
+
+**Query**
+    *PATCH* /api/v1/courses/web-developement/
+
+**Response _(for-success)_**
+
+    ```
+    {
+    "status": "success",
+    "course": {
+        "_id": "621cd7af2465c7320445e948",
+        "name": "web developement",
+        "description": "changed description",
+        "coach": "Sindhu Sri",
+        "__v": 0,
+        "id": "621cd7af2465c7320445e948"
+    }
+    }
+    ```
+Here's screenshot of successfull update of a course 
+
+![update-course](images/course/updateCourse/updateCourse.png)
 
 ## Session -
 
+**Query**
+    *POST* /api/v1/courses/{courseId}/sessions/
+
+**Response _(for-success)_**
+
+![image](images/session/addSession/successfull.png)
+
+**Response _(for-errors)_**
+
+- If sessions overlap
+
+![image](images/session/addSession/session-overlap.png)
+
+
+**Query**
+    *GET* /api/v1/courses/{courseId}/sessions/
+
+**Response _(for-success)_**
+
+![image](images/session/getSession/getAllSessions.png)
+
+
+**Query**
+    *PATCH* /api/v1/courses/{courseId}/sessions/{sessionId}
+
+**Response _(for-success)_**
+
+![image](images/session/updateSession/updated.png)
+
+
+**Query**
+    *DELETE* /api/v1/courses/{courseId}/sessions/{sessionId}
+
+**Response _(for-success)_**
+
+![image](images/session/addSession/deleted.png)
+
+**Response _(for-errors)_**
+
+- If no session is found
+
+![image](images/session/addSession/notFound.png)
 
 
 ## packages
