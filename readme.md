@@ -200,7 +200,7 @@ Here's screenshot of successfull update of a course
 
 - If sessions overlap
 
-![image](images/session/addSession/session-overlap.png)
+![image](images/session/addSession/sessions-overlap.png)
 
 
 **Query**
@@ -208,7 +208,7 @@ Here's screenshot of successfull update of a course
 
 **Response _(for-success)_**
 
-![image](images/session/getSession/getAllSessions.png)
+![image](images/session/getSession/getAllsessions.png)
 
 
 **Query**
@@ -224,13 +224,13 @@ Here's screenshot of successfull update of a course
 
 **Response _(for-success)_**
 
-![image](images/session/addSession/deleted.png)
+![image](images/session/deleteSession/deleted.png)
 
 **Response _(for-errors)_**
 
 - If no session is found
 
-![image](images/session/addSession/notFound.png)
+![image](images/session/deleteSession/notFound.png)
 
 
 ## packages
